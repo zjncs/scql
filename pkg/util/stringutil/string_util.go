@@ -47,6 +47,10 @@ var ErrSyntax = errors.New("invalid syntax")
 // If set to zero, it does not permit either escape and allows both quote characters to appear unescaped.
 // Different with strconv.UnquoteChar, it permits unnecessary backslash.
 func UnquoteChar(s string, quote byte) (value []byte, tail string, err error) {
+	if len(s) == 0 {
+		return nil, "", errors.Trace(ErrSyntax)
+	}
+
 	// easy cases
 	switch c := s[0]; {
 	case c == quote:

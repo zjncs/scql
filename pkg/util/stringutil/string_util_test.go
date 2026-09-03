@@ -32,6 +32,15 @@ var _ = Suite(&testStringUtilSuite{})
 type testStringUtilSuite struct {
 }
 
+func (s *testStringUtilSuite) TestUnquoteCharEmptyInput(c *C) {
+	defer testleak.AfterTest(c)()
+
+	value, tail, err := UnquoteChar("", '\'')
+	c.Assert(value, IsNil)
+	c.Assert(tail, Equals, "")
+	c.Assert(err, NotNil)
+}
+
 func (s *testStringUtilSuite) TestUnquote(c *C) {
 	defer testleak.AfterTest(c)()
 	table := []struct {
