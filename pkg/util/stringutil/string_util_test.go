@@ -17,6 +17,7 @@ import (
 	"testing"
 
 	. "github.com/pingcap/check"
+	"github.com/pingcap/errors"
 	"github.com/stretchr/testify/require"
 
 	"github.com/secretflow/scql/pkg/util/testleak"
@@ -38,7 +39,7 @@ func (s *testStringUtilSuite) TestUnquoteCharEmptyInput(c *C) {
 	value, tail, err := UnquoteChar("", '\'')
 	c.Assert(value, IsNil)
 	c.Assert(tail, Equals, "")
-	c.Assert(err, NotNil)
+	c.Assert(errors.Cause(err), Equals, ErrSyntax)
 }
 
 func (s *testStringUtilSuite) TestUnquote(c *C) {
