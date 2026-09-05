@@ -2,7 +2,7 @@
 
 If you want to enable tls in SCQL but don't have existing CA files, ca_generator.sh can help to generate self-signed CA files.
 
-``NOTE``: Self-signed CA files are ``not safe`` and can only be used for testing. Considering security, commercial CA files must be used in production environments.
+``NOTE``: Self-signed CA files are ``not safe`` and can only be used for testing. For security reasons, commercial CA files must be used in production environments.
 
 ## Step 1
 
